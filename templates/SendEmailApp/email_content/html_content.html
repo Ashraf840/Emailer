@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>HTML email template</title>
+    <meta name="viewport" content="width = 375, initial-scale = -1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        button:hover{ opacity: 0.8; }
+    </style>
+  </head>
+
+  <body style="background-color: #ffffff; font-size: 16px;">
+    <center>
+        <div class="card" style="display: grid; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);max-width: 700px;margin: auto;text-align: center;font-family: arial; background-color: #fff;">
+            <div id="card-head" style="height:100%; background:rgb(66, 223, 235); display: grid;">
+                <h1>John Doe</h1>
+                <p class="title" style="color: grey;font-size: 18px;">CEO & Founder, Example</p>
+                <p>Harvard University</p>
+            </div>
+            <div id="card-box" style="height:100%; background:rgb(245, 245, 245);">
+                <div id="card-body" style="background:rgb(245, 245, 245); padding: 10px; height:auto; margin: 20px 0; text-align: left;">
+                    <p>
+                        {{ msg }}
+                    </p>
+                    <br/>
+                    <p>
+                        Sincerely,
+                        <br/>
+                        <b> The Tanjim-Ashraf Team </b>
+                    </p>
+                </div>
+                <button style="border: none;outline: 0;display: inline-block;padding: 8px;color: rgb(245, 245, 245);background-color: #000;text-align: center;cursor: pointer;width: 100%;font-size: 18px;">
+                    Contact
+                </button>
+            </div>
+        </div>
+    </center>
+  </body>
+</html>
+

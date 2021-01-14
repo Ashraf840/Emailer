@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+{% extends 'SendEmailApp\base.html' %}
+
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <br/>
+
+        <h1>Home Page</h1>
+    
+        <br/>
+    
+        <a href="{% url 'send_email' %}" class="btn btn-info">Send Email</a>
+
+        <br/>
+
+    </div>
+
+{% endblock %}    

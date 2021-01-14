@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+{% extends 'SendEmailApp\base.html' %}
+
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <br/>
+
+        <h1>Email Sending Form</h1>
+    
+        <br/>
+    
+        <a href="{% url 'home' %}" class="btn btn-info">Home</a>
+
+        <br/><br/><br/>
+
+        <div class="row">
+            <div class="col-md-7">
+                {% if messages %}
+                    {% for msg in messages %}
+                        <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                            <strong> {{ msg }} </strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h4>Email Form</h4>
+                        </div>
+                        <br/>
+                        <div class="card-text">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {% load crispy_forms_tags %}
+
+                                <!-- The next line is very important to create the crispy effect in the forms -->
+                                <!-- {{ form | crispy }} -->
+                                
+                                {{ form.email.label }}
+                                {{ form.email | linebreaks }}
+                                {{ form.subject.label }}
+                                {{ form.subject | linebreaks }}
+                                {{ form.message }}
+
+                                <br/>
+
+                                <button type="submit" class="btn btn-info">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+
+
+        <br/>
+    </div>
+    
+{% endblock %}

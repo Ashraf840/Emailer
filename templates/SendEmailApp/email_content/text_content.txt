@@ -1,0 +1,8 @@
+John Doe
+CEO & Founder, Example
+Harvard University
+
+{{ msg }}
+
+Sincerely,
+The Tanjim-Ashraf Team
