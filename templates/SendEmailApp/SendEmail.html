@@ -43,6 +43,12 @@
                                 <!-- The next line is very important to create the crispy effect in the forms -->
                                 <!-- {{ form | crispy }} -->
                                 
+                                {{ form.fullname.label }}
+                                {{ form.fullname | linebreaks }}
+                                {{ form.company.label }}
+                                {{ form.company | linebreaks }}
+                                {{ form.designation.label }}
+                                {{ form.designation | linebreaks }}
                                 {{ form.email.label }}
                                 {{ form.email | linebreaks }}
                                 {{ form.subject.label }}

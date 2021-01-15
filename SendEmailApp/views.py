@@ -24,12 +24,18 @@ def sendEmail(request):
     if request.method == "POST":
         form = EmailForm(request.POST)
         if form.is_valid():
+            userName = form.cleaned_data['fullname']
+            company = form.cleaned_data['company']
+            designation = form.cleaned_data['designation']
             from_email = 'python4dia@gmail.com'
             recepient_email = form.cleaned_data['email']
             email_subject = form.cleaned_data['subject']
             msg = form.cleaned_data['message']
 
             Context = {
+                'userName':userName,
+                'company':company,
+                'designation':designation,
                 'recepient':recepient_email,
                 'subject':email_subject,
                 'msg':msg,
