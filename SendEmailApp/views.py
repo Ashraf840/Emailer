@@ -47,6 +47,11 @@ def sendEmail(request):
 
                 msg = EmailMultiAlternatives(email_subject, text_content, from_email, [recepient_email])
                 msg.attach_alternative(html_content, "text/html")
+                # Check file-attachment
+                if request.FILES:
+                    files = request.FILES.getlist('attachment')
+                    for f in files:
+                        msg.attach(f.name, f.read(), f.content_type)
                 msg.send()
                 messages.info(request, ('Your email has been sent successfully...'))
             except:

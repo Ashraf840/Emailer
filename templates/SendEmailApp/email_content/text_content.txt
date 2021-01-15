@@ -1,6 +1,6 @@
-John Doe
-CEO & Founder, Example
-Harvard University
+{{ userName }}
+{{ designation }}
+{{ company }}
 
 {{ msg }}
 
