@@ -8,6 +8,19 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.template import Context
 
+# Speeding up Django Email Sending using Multithreading
+import threading
+
+
+# Multi-threading
+class EmailThread(threading.Thread):
+    def __init__(self, msg):
+        self.email = msg
+        threading.Thread.__init__(self)
+
+    def run(self):
+        self.email.send()
+
 
 
 # Create your views here.
@@ -52,7 +65,8 @@ def sendEmail(request):
                     files = request.FILES.getlist('attachment')
                     for f in files:
                         msg.attach(f.name, f.read(), f.content_type)
-                msg.send()
+                # msg.send()    # sends email slow
+                EmailThread(msg).start()    # sends email fast
                 messages.info(request, ('Your email has been sent successfully...'))
             except:
                 pass
