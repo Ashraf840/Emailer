@@ -5,6 +5,29 @@
 
 {% block title %} {{ title }} {% endblock %}
 
+{% block stylesheet %}
+<style>
+    #yourBtn {
+        position: relative;
+        top: 0px;
+        font-family: calibri;
+        width: auto;
+        padding: 5px;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border: 1px dashed #BBB;
+        text-align: center;
+        background-color: #DDD;
+        cursor: pointer;
+    }
+
+    #send_btn {
+        width: 200px;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 
     <div class="container">
@@ -55,15 +78,23 @@
                                 {{ form.subject | linebreaks }}
                                 {{ form.message }}
                                 <br/>
-                                {{ form.attachment }}
-
+                                <!-- Mocked file-upload button -->
+                                <div id="yourBtn" onclick="getFile()">click to upload a file</div>
+                                <div style="height: 0px;width: 0px; overflow:hidden;">
+                                    <!-- Real file upload button -->
+                                    {{ form.attachment }}
+                                    <!-- <input id="upfile" type="file" value="upload" onchange="sub(this)" /> -->
+                                </div>
                                 <br/><br/><br/>
 
-                                <button type="submit" class="btn btn-info">Send</button>
+                                <button type="submit" class="btn btn-info" id="send_btn">Send</button>
                             </form>
                         </div>
                     </div>
-                  </div>
+                </div>
+
+                <br/><br/><br/>
+
             </div>
             <div class="col-md-5"></div>
         </div>
@@ -72,4 +103,29 @@
         <br/>
     </div>
     
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+    function getFile() {
+        document.getElementById("upfile").click();
+    }
+
+    function sub(obj) {
+        var file = obj.value;
+        var fileName = file.split("\\");
+        document.getElementById("yourBtn").innerHTML = fileName[fileName.length - 1];
+        ChangeColor();
+        document.myForm.submit();
+        event.preventDefault();
+    }
+
+    function ChangeColor()  
+    {  
+        document.getElementById('yourBtn').style.backgroundColor='rgb(167, 167, 167)';  
+        setTimeout("sub(obj)",2000);  
+    }  
+</script>
 {% endblock %}
