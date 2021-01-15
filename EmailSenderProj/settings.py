@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'multi_email_field',
 
     'SendEmailApp.apps.SendemailappConfig',
 ]
