@@ -32,6 +32,10 @@ class EmailForm(forms.Form):
         # MultiEmailField
         self.fields['email'].widget.attrs['readonly'] = 'readonly'
 
+        # message
+        self.fields['message'].widget.attrs['placeholder'] = 'Write something.....'
+
+
         # File-attachment
         self.fields['attachment'].widget.attrs['style'] = 'background-color: red;'      # not displaying the main file-upload btn, hide it on-page
         self.fields['attachment'].widget.attrs['id'] = 'upfile'
