@@ -72,9 +72,10 @@
                                 {{ form.company | linebreaks }}
                                 {{ form.designation.label }}
                                 {{ form.designation | linebreaks }}
-                                {{ form.email.label }}
+                                {{ form.email_input.label }}
+                                {{ form.email_input | linebreaks }}
                                 {{ form.email }}
-                                <small class="text-muted">Press 'Enter' to add another email</small>
+                                <small class="text-muted">Press <b>semi-colon (;)</b> to add another email</small>
                                 <br/><br/>
                                 {{ form.subject.label }}
                                 {{ form.subject | linebreaks }}
@@ -111,6 +112,30 @@
 
 {% block javascript %}
 <script>
+    // Email-input field
+    // semi-colon (;) Key Press
+    let email_input = document.getElementById("email_input");
+    function eventListener(event) {
+        if (event.keyCode === 59) {
+            if (email_input.value !== "") {
+                var x = document.getElementById("email_input").value;
+                document.getElementById("id_email").value += x + ('\n');
+            }else{
+                event.returnValue = false;      // prevent a user to put semi-colon in the empty "email_input" field
+            }
+        }
+    }
+    function eventListener2(event) {
+        var x = event.which || event.keyCode;
+        // alert(x);
+        if (x === 186) {
+            document.getElementById("email_input").value = "";
+        }
+    }
+
+
+
+    // Upload Files
     function getFile() {
         document.getElementById("upfile").click();
     }

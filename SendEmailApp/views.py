@@ -61,7 +61,7 @@ def sendEmail(request):
                 html_content = render_to_string('SendEmailApp/email_content/html_content.html', Context)
 
                 # msg = EmailMultiAlternatives(email_subject, text_content, from_email, [recepient_email])  # if it contains only one email, then put '[]' to make it a list.
-                msg = EmailMultiAlternatives(email_subject, text_content, from_email, recepient_email)      # if it contains multiple emails, then doesn't need to put '[]', it is already a list.
+                msg = EmailMultiAlternatives(email_subject, text_content, from_email, bcc=recepient_email)      # if it contains multiple emails, then doesn't need to put '[]', it is already a list.
                 # msg = EmailMultiAlternatives(email_subject, text_content, from_email, ['enamulmajid021@gmail.com', 'shift2unleashed2011@gmail.com'])  # WORKED
                 msg.attach_alternative(html_content, "text/html")
                 # Check file-attachment

@@ -14,7 +14,8 @@ class EmailForm(forms.Form):
 
     fullname = forms.CharField(label='Your Name', max_length=50, widget=forms.TextInput())
     company = forms.CharField(label='Company Name', max_length=50, required=False, widget=forms.TextInput())
-    designation = forms.ChoiceField(required=False, choices = DESIGNATION_CHOICES) 
+    designation = forms.ChoiceField(required=False, choices = DESIGNATION_CHOICES)
+    email_input = forms.EmailField(label="Input Email", required=False, max_length=60, widget=forms.TextInput())
     # email = forms.CharField(label='Recipient', max_length=100, widget=forms.TextInput())
     email = MultiEmailField(label='Recipient')
     subject = forms.CharField(max_length=255, widget=forms.TextInput())
@@ -23,6 +24,15 @@ class EmailForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(EmailForm, self).__init__(*args, **kwargs)
+        #Email-input
+        self.fields['email_input'].widget.attrs['id'] = 'email_input'
+        self.fields['email_input'].widget.attrs['onkeypress'] = 'eventListener(event)'
+        self.fields['email_input'].widget.attrs['onkeyup'] = 'eventListener2(event)'
+
+        # MultiEmailField
+        self.fields['email'].widget.attrs['readonly'] = 'readonly'
+
+        # File-attachment
         self.fields['attachment'].widget.attrs['style'] = 'background-color: red;'      # not displaying the main file-upload btn, hide it on-page
         self.fields['attachment'].widget.attrs['id'] = 'upfile'
         self.fields['attachment'].widget.attrs['onchange'] = 'sub(this)'
