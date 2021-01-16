@@ -71,6 +71,7 @@ def sendEmail(request):
                         msg.attach(f.name, f.read(), f.content_type)
                 # msg.send()    # sends email slow
                 EmailThread(msg).start()    # sends email fast
+                form = EmailForm()      # shows an empty form after clicking the "submit" button
                 messages.info(request, ('Your email has been sent successfully...'))
             except:
                 pass
